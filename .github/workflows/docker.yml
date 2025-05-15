@@ -1,0 +1,29 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Push Docker image
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build Docker image
+        run: docker build -t my-repo .
+
+      - name: Tag Docker image
+        run: docker tag my-repo:latest <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest
+
+      - name: Push Docker image
+        run: docker push <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest
+

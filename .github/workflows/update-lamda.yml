@@ -1,0 +1,20 @@
+name: Update Lambda
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-lambda:
+    name: Update Lambda Function
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update Lambda
+        run: |
+          aws lambda update-function-code --function-name my_function --image-uri <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest
+

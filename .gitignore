@@ -27,6 +27,5 @@ docker-compose.override.yml
 .DS_Store
 Thumbs.db
 
-# GitHub Actions
-.github/workflows/*.yml
+
 
