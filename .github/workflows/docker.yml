@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'lambda/**'  # Adjust path to match where your Dockerfile/service code is
+      - 'app/**'  # Adjust path to match where your Dockerfile/service code is
 
 env:
   AWS_REGION: us-east-1                     # Change to your region
